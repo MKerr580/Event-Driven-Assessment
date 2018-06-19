@@ -1,0 +1,21 @@
+﻿	
+	body {
+		font: small arial, helvetica, sans-serif;
+	}
+
+
+img
+{
+	height:480px;
+	width:680px;
+	border:solid 3px black;
+}
+
+#content
+{
+	height:480px;
+	width:680px;
+	border:solid 3px black;
+	background-image:url(images/money.jpg);
+	background-repeat:no-repeat;
+}

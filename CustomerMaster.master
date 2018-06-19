@@ -1,0 +1,105 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="CustomerMaster.master.cs" Inherits="CustomerMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="header">
+<p>Customer's view</p>
+       
+        <ul>
+            <asp:LinkButton ID="lBtnHome" runat="server" OnClick="lBtnHome_Click">Customer Home Page</asp:LinkButton>
+            <li>
+                <br />
+            </li>
+            <asp:LinkButton ID="lBtnBalance" runat="server" OnClick="lBtnBalance_Click">View Balance</asp:LinkButton>
+            <asp:LinkButton ID="lBtnWithdraw" runat="server" OnClick="lBtnWithdraw_Click">Withdraw Cash</asp:LinkButton>
+       
+            
+            <asp:LinkButton ID="lBtnWithdrawrec" runat="server" OnClick="lBtnWithdrawRec_Click">Withdraw Cash + Receipt</asp:LinkButton>
+       
+            
+            <li>
+                <br />
+            </li>
+       
+            
+                <li style="height: 268px">
+                <asp:RadioButtonList ID="WithdrawList" runat="server" Height="16px" Width="443px">
+                    <asp:ListItem>10</asp:ListItem>
+                    <asp:ListItem>20</asp:ListItem>
+                    <asp:ListItem>30</asp:ListItem>
+                    <asp:ListItem>40</asp:ListItem>
+                        <asp:ListItem>50</asp:ListItem>
+                        <asp:ListItem>100</asp:ListItem>
+                        <asp:ListItem>150</asp:ListItem>
+                        <asp:ListItem>250</asp:ListItem>
+                </asp:RadioButtonList>
+                <asp:ContentPlaceHolder ID="ContentHolder" runat="server">
+
+            
+            <asp:TextBox ID="TxtWithdraw" runat="server"></asp:TextBox>
+       
+            
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lblError" runat="server" ></asp:Label>
+       
+            
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <asp:RadioButton ID="WithdrawEuro" runat="server" OnCheckedChanged="RadioButton1_CheckedChanged" Text="Withdraw as EURO
+                        " />
+                </asp:ContentPlaceHolder>
+       
+            
+            <li style="height: 35px">
+                <asp:Button ID="ContBut" runat="server" Text="Continue" OnClick="ContBut_Click" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Button ID="ExitBut" runat="server" Text="Exit" OnClick="ExitBut_Click" />
+       
+            
+            <li style="height: 29px">
+                <asp:Button ID="ContButRec" runat="server" Text="Continue" Visible="false" OnClick="ContButRec_Click" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Button ID="ExitButRec" runat="server" Text="Exit" Visible="false" OnClick="ExitButRec_Click" />
+       
+            
+        </ul>
+    </div>
+    <div id="content">
+        <asp:ContentPlaceHolder ID="CPHContent" runat="server">
+        <asp:Label ID="LblName" runat="server" ></asp:Label>
+            <br />
+        <asp:Label ID="LblAccNum" runat="server" ></asp:Label>
+            <br />
+            <asp:Label ID="lblBal" runat="server" Text=""></asp:Label>
+        <br />
+        </asp:ContentPlaceHolder>
+    </div>
+        <p>
+            <asp:Label ID="lblReceiptHeader" runat="server" Text="Receipt" Visible="false"></asp:Label>
+            <br />
+        <asp:Label ID="LblNameRec" runat="server" Visible="false" ></asp:Label>
+            <br />
+        <asp:Label ID="LblAccNumRec" runat="server" Visible="false" ></asp:Label>
+            <br />
+            <asp:Label ID="lblBalRec" runat="server" Text="" Visible="false"></asp:Label>
+            <br />
+            <asp:Label ID="lblBalWithdrawRec" runat="server" Text="" Visible="false"></asp:Label>
+            <br />
+            <asp:Label ID="lblBalRecNew" runat="server" Text="" Visible="false"></asp:Label>
+            <br />
+        </p>
+        <p>
+            &nbsp;</p>
+        <p>
+        <br />
+        </p>
+    </form>
+</body>
+</html>
