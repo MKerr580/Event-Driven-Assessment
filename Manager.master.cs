@@ -30,6 +30,7 @@ public partial class Manager : System.Web.UI.MasterPage
             lblCardsret.Text = "Cards Retained: "+BankSys1.getCardsRet().ToString();
             LblTotalBal.Text = "Total Balance: "+BankSys1.gettotalbal().ToString();
             LblAmountWithdrawn.Text = "Amount Withdrawn: "+BankSys1.getwithdrawls().ToString();
+            
         }
     }
 
@@ -40,12 +41,36 @@ public partial class Manager : System.Web.UI.MasterPage
 
     protected void lBtnMaintenance_Click(object sender, EventArgs e)
     {
-        if(TxtRate.ToString()!= "")
+        CPHContent.Visible = true;
+        Shutdown.Visible = false;
+
+    }
+    protected void lBtnShutdown_Click(object sender,EventArgs e)
+    {
+        LblAmountWithdrawn.Visible = false;
+        lblCardsret.Visible = false;
+        lblErrorMSG.Visible = false;
+        lblExchRate.Visible = false;
+        lblTimeUsed.Visible = false;
+        LblTotalBal.Visible = false;
+        lBtnExchRate.Visible = false;
+        TxtRate.Visible = false;
+        lblFailedLogins.Visible = false;
+        Shutdown.Visible = true;
+
+    }
+    protected void lBtnManagerHome_Click(object sender, EventArgs e)
+    {
+
+    }
+    protected void lBtnExchRate_Click(object sender,EventArgs e)
+    {
+        if (TxtRate.ToString() != "")
         {
             decimal exchRate;
             exchRate = Convert.ToDecimal(TxtRate.Text);
             BankSys1.setexchangerate(exchRate);
-            Session["Bank"]= BankSys1;
+            Session["Bank"] = BankSys1;
             lblExchRate.Text = "Exchange Rate: " + BankSys1.getexchangerate().ToString();
         }
         else
@@ -53,7 +78,9 @@ public partial class Manager : System.Web.UI.MasterPage
             lblErrorMSG.Text = "Error";
         }
     }
-    protected void lBtnShutdown_Click(object sender,EventArgs e)
+
+
+    protected void Shutdown_Click(object sender, EventArgs e)
     {
         string connStr = ConfigurationManager.ConnectionStrings["Bank"].ConnectionString;
 
@@ -72,9 +99,9 @@ public partial class Manager : System.Web.UI.MasterPage
             foreach (KeyValuePair<string, Account> kvp1 in c.getAccounts())
             {
                 //run update acc from the DAL
-               DAL.updateAccountData(kvp1.Value);
+                DAL.updateAccountData(kvp1.Value);
 
-           }
+            }
         }
         //setting the session variables to null due to system shutdown
         Session["Bank"] = null;
@@ -84,9 +111,5 @@ public partial class Manager : System.Web.UI.MasterPage
         //Abandoning session and redirecting user the index
         Session.Abandon();
         Response.Redirect("..\\Index.aspx");
-    }
-    protected void lBtnManagerHome_Click(object sender, EventArgs e)
-    {
-
     }
 }

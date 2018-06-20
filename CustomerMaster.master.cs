@@ -23,9 +23,11 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
 
         if (Session["Bank"] == null)
         {
+            //if Bank is null then redirect to menu
             Response.Redirect("~/Index.aspx");
         }else
         {
+            //retrieving data from the session
             BankSys1 = (Bank)Session["Bank"];
             pin = (string)Session["pin"];
             login = (string)Session["login"];
@@ -34,12 +36,13 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
             {
                 if (login.Equals(c.Key) && (c.Value.checkPin(pin)))
                 {
+                    //setting customer values
                     loggedInCustomer = c.Value;
                     custAccount = c.Value.getAccount(pin);
                     
                 }
             }
-            
+            //inserting data into textboxes
             bal = custAccount.getbalance();
             lblBal.Text = bal.ToString("C");
             lblBalRec.Text = bal.ToString("C");
@@ -61,6 +64,7 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
 
     protected void lBtnBalance_Click(object sender, EventArgs e)
     {
+        //displaying and hiding relevant info
         ContBut.Visible = true;
         ExitBut.Visible = true;
         LblName.Visible = true;
@@ -85,7 +89,7 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
 
     protected void lBtnWithdraw_Click(object sender, EventArgs e)
     {
-
+        //displaying and hiding relevant info
         ContBut.Visible = true;
         ExitBut.Visible = true;
         LblName.Visible = true;
@@ -111,6 +115,7 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
 
     protected void ExitBut_Click(object sender, EventArgs e)
     {
+        //sends the user to main menu 
         Response.Redirect("~/Index.aspx");
     }
 
@@ -118,41 +123,50 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
     {
         if (TxtWithdraw.Text.Equals(""))
         {
+            //converts the select value in checked box too integer and stores
             amountwithdraw = Convert.ToInt32(WithdrawList.SelectedValue);
         }
         else
         {
+            //converts the entered value in text box too integer and stores
             amountwithdraw = Convert.ToInt32(TxtWithdraw.Text);
         }
 
         if(amountwithdraw % 10 != 0)
         {
-            //ʕ•ᴥ•ʔ
+            //if the value isnt a multiple of 10 then error is displayed
             lblError.Text = "Error- Amount must be a multiple of 10";
         }
         else if (WithdrawEuro.Checked)
         {
+            //if chosen to withdraw as euros amount withdraw is divided by exchange rate stored in banksys and stored in withdrawdec
             withdrawdec = amountwithdraw / BankSys1.getexchangerate();
+            //setting the new balance
             bal = bal - withdrawdec;
         }
         else
         {
+            //setting amount withdraw to withdraw dec 
             withdrawdec = amountwithdraw;
+            //setting the new balance
             bal = bal - withdrawdec;
         }
         transsucc = BankSys1.Withdraw(login, pin, withdrawdec);
+        //checking if transaction succeeds
         if (transsucc == false)
         {
+            //display error message if it fails
             lblError.Text = "Error - Insufficent Funds";
         }
         else
         {
-            
+            //display balance in the  designated label
             lblBal.Text = bal.ToString("C");
         }
     }
     protected void ContButRec_Click(object sender, EventArgs e)
     {
+
         if (TxtWithdraw.Text.Equals(""))
         {
             amountwithdraw = Convert.ToInt32(WithdrawList.SelectedValue);
@@ -198,17 +212,15 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
 
     protected void lBtnWithdrawRec_Click(object sender, EventArgs e)
     {
+        //displaying and hiding relevant info
         lblReceiptHeader.Visible = true;
         ContBut.Visible = false;
         ExitBut.Visible = false;
-        LblName.Visible = false;
-        LblAccNum.Visible = false;
-        lblBal.Visible = false;
         ContButRec.Visible = true;
         ExitButRec.Visible = true;
-        LblNameRec.Visible = true;
-        LblAccNumRec.Visible = true;
-        lblBalRec.Visible = true;
+        LblName.Visible = true;
+        LblAccNum.Visible = true;
+        lblBal.Visible = true;
         lblBalRecNew.Visible = true;
         lblBalWithdrawRec.Visible = true;
         WithdrawList.Visible = true;

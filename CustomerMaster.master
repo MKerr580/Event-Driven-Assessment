@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link href="stylesheet.css" rel="stylesheet"  />
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -19,7 +20,11 @@
                 <br />
             </li>
             <asp:LinkButton ID="lBtnBalance" runat="server" OnClick="lBtnBalance_Click">View Balance</asp:LinkButton>
+            &nbsp;&nbsp;&nbsp;
             <asp:LinkButton ID="lBtnWithdraw" runat="server" OnClick="lBtnWithdraw_Click">Withdraw Cash</asp:LinkButton>
+       
+            
+            &nbsp;&nbsp;&nbsp;
        
             
             <asp:LinkButton ID="lBtnWithdrawrec" runat="server" OnClick="lBtnWithdrawRec_Click">Withdraw Cash + Receipt</asp:LinkButton>
@@ -73,16 +78,21 @@
     </div>
     <div id="content">
         <asp:ContentPlaceHolder ID="CPHContent" runat="server">
+            <asp:Label ID="lblReceiptHeader" runat="server" Text="Receipt" Visible="false"></asp:Label>
+            <br />
         <asp:Label ID="LblName" runat="server" ></asp:Label>
             <br />
         <asp:Label ID="LblAccNum" runat="server" ></asp:Label>
             <br />
             <asp:Label ID="lblBal" runat="server" Text=""></asp:Label>
+            <br />
+            <asp:Label ID="lblBalWithdrawRec" runat="server" Text="" Visible="false"></asp:Label>
+            <br />
+            <asp:Label ID="lblBalRecNew" runat="server" Text="" Visible="false"></asp:Label>
         <br />
         </asp:ContentPlaceHolder>
     </div>
         <p>
-            <asp:Label ID="lblReceiptHeader" runat="server" Text="Receipt" Visible="false"></asp:Label>
             <br />
         <asp:Label ID="LblNameRec" runat="server" Visible="false" ></asp:Label>
             <br />
@@ -90,9 +100,7 @@
             <br />
             <asp:Label ID="lblBalRec" runat="server" Text="" Visible="false"></asp:Label>
             <br />
-            <asp:Label ID="lblBalWithdrawRec" runat="server" Text="" Visible="false"></asp:Label>
             <br />
-            <asp:Label ID="lblBalRecNew" runat="server" Text="" Visible="false"></asp:Label>
             <br />
         </p>
         <p>

@@ -17,7 +17,7 @@
             <asp:ListItem>Manager</asp:ListItem>
             <asp:ListItem>Customer</asp:ListItem>
         </asp:RadioButtonList>
-        <asp:Login ID="Login1" runat="server" BackColor="#FFFBD6" BorderColor="#FFDFAD" 
+        <asp:Login ID="Login1" runat="server" Visible="false" BackColor="#FFFBD6" BorderColor="#FFDFAD" 
             BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" 
             Font-Size="Large" ForeColor="#333333" Height="118px" TextLayout="TextOnTop" 
             Width="358px" onauthenticate="Login1_Authenticate">
