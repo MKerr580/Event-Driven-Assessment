@@ -31,7 +31,7 @@
        
             
                 <li style="height: 268px">
-                <asp:RadioButtonList ID="WithdrawList" runat="server" Height="16px" Width="443px">
+                <asp:RadioButtonList ID="WithdrawList" runat="server" Height="16px" Width="443px" Visible="false" OnSelectedIndexChanged="WithdrawList_SelectedIndexChanged">
                     <asp:ListItem>10</asp:ListItem>
                     <asp:ListItem>20</asp:ListItem>
                     <asp:ListItem>30</asp:ListItem>
@@ -44,7 +44,7 @@
                 <asp:ContentPlaceHolder ID="ContentHolder" runat="server">
 
             
-            <asp:TextBox ID="TxtWithdraw" runat="server"></asp:TextBox>
+            <asp:TextBox ID="TxtWithdraw" Visible="false" runat="server"></asp:TextBox>
        
             
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lblError" runat="server" ></asp:Label>
@@ -52,15 +52,15 @@
             
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                    <asp:RadioButton ID="WithdrawEuro" runat="server" OnCheckedChanged="RadioButton1_CheckedChanged" Text="Withdraw as EURO
+                    <asp:RadioButton ID="WithdrawEuro" runat="server" Visible="false" OnCheckedChanged="RadioButton1_CheckedChanged" Text="Withdraw as EURO
                         " />
                 </asp:ContentPlaceHolder>
        
             
             <li style="height: 35px">
-                <asp:Button ID="ContBut" runat="server" Text="Continue" OnClick="ContBut_Click" />
+                <asp:Button ID="ContBut" runat="server" Visible="false" Text="Continue" OnClick="ContBut_Click" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:Button ID="ExitBut" runat="server" Text="Exit" OnClick="ExitBut_Click" />
+                <asp:Button ID="ExitBut" runat="server" Visible="false" Text="Exit" OnClick="ExitBut_Click" />
        
             
             <li style="height: 29px">

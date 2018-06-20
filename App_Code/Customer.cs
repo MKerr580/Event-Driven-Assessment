@@ -16,11 +16,11 @@ public class Customer:User
     {
         Accounts = accounts;
     }
-    Dictionary<string, Account> getAccounts()
+    public Dictionary<string, Account> getAccounts()
     {
         return Accounts;
     }
-    Dictionary<string, Account> setAccounts(Dictionary<string, Account> Accounts)
+    public Dictionary<string, Account> setAccounts(Dictionary<string, Account> Accounts)
     {
         this.Accounts = Accounts;
         return Accounts;
@@ -82,6 +82,6 @@ public class Customer:User
         }
         return AnAccount;
     }
-
    
+
 }

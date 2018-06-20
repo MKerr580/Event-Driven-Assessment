@@ -43,7 +43,7 @@ public class Account
     {
         return accountnumber;
     }
-    string setaccnumber(string accountnumber)
+    public string setaccnumber(string accountnumber)
     {
         this.accountnumber = accountnumber;
         return accountnumber;
@@ -92,10 +92,6 @@ public class Account
             ok = false;
         }
         return ok;
-    }
-    public IEnumerator GetEnumerator()
-    {
-        yield return (Account)this;
     }
 
 }

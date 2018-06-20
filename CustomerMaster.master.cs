@@ -61,11 +61,6 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
 
     protected void lBtnBalance_Click(object sender, EventArgs e)
     {
-        
-    }
-
-    protected void lBtnWithdraw_Click(object sender, EventArgs e)
-    {
         ContBut.Visible = true;
         ExitBut.Visible = true;
         LblName.Visible = true;
@@ -78,6 +73,35 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
         lblBalWithdrawRec.Visible = false;
         ContButRec.Visible = false;
         ExitButRec.Visible = false;
+        lblReceiptHeader.Visible = false;
+        WithdrawList.Visible = false;
+        TxtWithdraw.Visible = false;
+        WithdrawEuro.Visible = false;
+        ContBut.Visible = false;
+        ExitBut.Visible = false;
+        ContButRec.Visible = false;
+        ExitButRec.Visible = false;
+    }
+
+    protected void lBtnWithdraw_Click(object sender, EventArgs e)
+    {
+
+        ContBut.Visible = true;
+        ExitBut.Visible = true;
+        LblName.Visible = true;
+        LblAccNum.Visible = true;
+        lblBal.Visible = true;
+        WithdrawList.Visible = true;
+        TxtWithdraw.Visible = true;
+        WithdrawEuro.Visible = true;
+        LblNameRec.Visible = false;
+        LblAccNumRec.Visible = false;
+        lblBalRec.Visible = false;
+        lblBalRecNew.Visible = false;
+        lblBalWithdrawRec.Visible = false;
+        ContButRec.Visible = false;
+        ExitButRec.Visible = false;
+        lblReceiptHeader.Visible = false;
     }
 
     protected void RadioButton1_CheckedChanged(object sender, EventArgs e)
@@ -187,6 +211,14 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
         lblBalRec.Visible = true;
         lblBalRecNew.Visible = true;
         lblBalWithdrawRec.Visible = true;
+        WithdrawList.Visible = true;
+        TxtWithdraw.Visible = true;
+        WithdrawEuro.Visible = true;
+    }
+
+    protected void WithdrawList_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
     }
 }
 

@@ -46,7 +46,9 @@ public partial class Manager : System.Web.UI.MasterPage
             exchRate = Convert.ToDecimal(TxtRate.Text);
             BankSys1.setexchangerate(exchRate);
             Session["Bank"]= BankSys1;
-        }else
+            lblExchRate.Text = "Exchange Rate: " + BankSys1.getexchangerate().ToString();
+        }
+        else
         {
             lblErrorMSG.Text = "Error";
         }
@@ -66,8 +68,8 @@ public partial class Manager : System.Web.UI.MasterPage
         foreach (KeyValuePair<string, Customer> kvp in BankSys1.getcustomerData())
         {
             c = kvp.Value;
-            //loop through cust accounts
-            foreach (KeyValuePair<string, Account> kvp1 in c.getAccount(pin))
+            //loop through cust account
+            foreach (KeyValuePair<string, Account> kvp1 in c.getAccounts())
             {
                 //run update acc from the DAL
                DAL.updateAccountData(kvp1.Value);
