@@ -141,8 +141,10 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
         {
             //if chosen to withdraw as euros amount withdraw is divided by exchange rate stored in banksys and stored in withdrawdec
             withdrawdec = amountwithdraw / BankSys1.getexchangerate();
+            
             //setting the new balance
             bal = bal - withdrawdec;
+            
             WithdrawEuro.Checked = false;
         }
         else
@@ -151,6 +153,8 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
             withdrawdec = amountwithdraw;
             //setting the new balance
             bal = bal - withdrawdec;
+            custAccount.setbalance(bal);
+            Session["User"] = custAccount;
         }
         transsucc = BankSys1.Withdraw(login, pin, withdrawdec);
         //checking if transaction succeeds
@@ -191,6 +195,8 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
             withdrawdec = amountwithdraw / BankSys1.getexchangerate();
             //setting the new balance
             bal = bal - withdrawdec;
+            custAccount.setbalance(bal);
+            Session["User"] = custAccount;
             WithdrawEuro.Checked = false;
         }
         else
