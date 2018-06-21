@@ -16,9 +16,11 @@
        
         <ul>
             <asp:LinkButton ID="lBtnHome" runat="server" OnClick="lBtnHome_Click">Customer Home Page</asp:LinkButton>
-            <li>
+            
+                    <br />
+            
                 <br />
-            </li>
+            
             <asp:LinkButton ID="lBtnBalance" runat="server" OnClick="lBtnBalance_Click">View Balance</asp:LinkButton>
             &nbsp;&nbsp;&nbsp;
             <asp:LinkButton ID="lBtnWithdraw" runat="server" OnClick="lBtnWithdraw_Click">Withdraw Cash</asp:LinkButton>
@@ -30,12 +32,11 @@
             <asp:LinkButton ID="lBtnWithdrawrec" runat="server" OnClick="lBtnWithdrawRec_Click">Withdraw Cash + Receipt</asp:LinkButton>
        
             
-            <li>
+            
                 <br />
-            </li>
+            
        
             
-                <li style="height: 268px">
                 <asp:RadioButtonList ID="WithdrawList" runat="server" Height="16px" Width="443px" Visible="false" OnSelectedIndexChanged="WithdrawList_SelectedIndexChanged">
                     <asp:ListItem>10</asp:ListItem>
                     <asp:ListItem>20</asp:ListItem>
@@ -46,7 +47,8 @@
                         <asp:ListItem>150</asp:ListItem>
                         <asp:ListItem>250</asp:ListItem>
                 </asp:RadioButtonList>
-                <asp:ContentPlaceHolder ID="ContentHolder" runat="server">
+
+            &nbsp;<asp:ContentPlaceHolder ID="ContentHolder" runat="server">
 
             
             <asp:TextBox ID="TxtWithdraw" Visible="false" runat="server"></asp:TextBox>
@@ -60,15 +62,15 @@
                     <asp:RadioButton ID="WithdrawEuro" runat="server" Visible="false" OnCheckedChanged="RadioButton1_CheckedChanged" Text="Withdraw as EURO
                         " />
                 </asp:ContentPlaceHolder>
-       
-            
-            <li style="height: 35px">
+            <br />
+            <br />
+           
                 <asp:Button ID="ContBut" runat="server" Visible="false" Text="Continue" OnClick="ContBut_Click" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:Button ID="ExitBut" runat="server" Visible="false" Text="Exit" OnClick="ExitBut_Click" />
        
-            
-            <li style="height: 29px">
+           <br />
+            <br />
                 <asp:Button ID="ContButRec" runat="server" Text="Continue" Visible="false" OnClick="ContButRec_Click" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:Button ID="ExitButRec" runat="server" Text="Exit" Visible="false" OnClick="ExitButRec_Click" />
@@ -80,11 +82,11 @@
         <asp:ContentPlaceHolder ID="CPHContent" runat="server">
             <asp:Label ID="lblReceiptHeader" runat="server" Text="Receipt" Visible="false"></asp:Label>
             <br />
-        <asp:Label ID="LblName" runat="server" ></asp:Label>
+        <asp:Label ID="LblName" runat="server"  ></asp:Label>
             <br />
         <asp:Label ID="LblAccNum" runat="server" ></asp:Label>
             <br />
-            <asp:Label ID="lblBal" runat="server" Text=""></asp:Label>
+            <asp:Label ID="lblBal" runat="server" Visible="false" Text=""></asp:Label>
             <br />
             <asp:Label ID="lblBalWithdrawRec" runat="server" Text="" Visible="false"></asp:Label>
             <br />

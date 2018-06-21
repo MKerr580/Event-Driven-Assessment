@@ -212,6 +212,7 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
         {
             //display balance in the  designated labels
             lblBalRecNew.Text = bal.ToString("C");
+            
             lblBalWithdrawRec.Text = withdrawdec.ToString("C");
 
         }

@@ -81,18 +81,23 @@ public partial class Index : System.Web.UI.Page
             }
             else
             {
+                failedlogins = BankSys.getfailedlogins();
                 //adding 1 to failed logins
                 failedlogins = failedlogins + 1;
                 //storing failed logins in the bank system
                 BankSys.setfailedlogins(failedlogins);
+                Session["BankSys"] = BankSys;
                 if (BankSys.getfailedlogins() >= 3)
                 {
                     //adding 1 to cardsret
                     cardsret = cardsret + 1;
                     //storinng cards retained in the system
                     BankSys.setCardsRet(cardsret);
+                    Session["BankSys"] = BankSys;
                     //disabling the customer button
+                    rblChoose.SelectedIndex = 0;
                     rblChoose.Items[1].Enabled = false;
+                    BankSys.setfailedlogins(0);
                     //displaying error message to the user
                     LabelError.Text = "Your Card has been Swallowed";
                 }
