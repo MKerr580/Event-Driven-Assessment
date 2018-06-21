@@ -62,6 +62,8 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
 
     protected void lBtnBalance_Click(object sender, EventArgs e)
     {
+        WithdrawEuro.Checked = false;
+        lblError.Text = "";
         //displaying and hiding relevant info
         ContBut.Visible = true;
         ExitBut.Visible = true;
@@ -84,6 +86,9 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
 
     protected void lBtnWithdraw_Click(object sender, EventArgs e)
     {
+
+        WithdrawEuro.Checked = false;
+        lblError.Text = "";
         //displaying and hiding relevant info
         ContBut.Visible = true;
         ExitBut.Visible = true;
@@ -107,12 +112,15 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
 
     protected void ExitBut_Click(object sender, EventArgs e)
     {
+        lblError.Text = "";
+        WithdrawEuro.Checked = false;
         //sends the user to main menu 
         Response.Redirect("~/Index.aspx");
     }
 
     protected void ContBut_Click(object sender, EventArgs e)
     {
+        lblError.Text = "";
         if (TxtWithdraw.Text.Equals(""))
         {
             //converts the select value in checked box too integer and stores
@@ -135,6 +143,7 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
             withdrawdec = amountwithdraw / BankSys1.getexchangerate();
             //setting the new balance
             bal = bal - withdrawdec;
+            WithdrawEuro.Checked = false;
         }
         else
         {
@@ -159,6 +168,7 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
     protected void ContButRec_Click(object sender, EventArgs e)
     {
 
+        lblError.Text = "";
         if (TxtWithdraw.Text.Equals(""))
         {
             //converts the select value in checked box too integer and stores
@@ -181,6 +191,7 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
             withdrawdec = amountwithdraw / BankSys1.getexchangerate();
             //setting the new balance
             bal = bal - withdrawdec;
+            WithdrawEuro.Checked = false;
         }
         else
         {
@@ -207,11 +218,15 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
     }
     protected void ExitButRec_Click(object sender, EventArgs e)
     {
+        WithdrawEuro.Checked = false;
+        lblError.Text = "";
         Response.Redirect("~/Index.aspx");
     }
 
     protected void lBtnWithdrawRec_Click(object sender, EventArgs e)
     {
+        WithdrawEuro.Checked = false;
+        lblError.Text = "";
         //displaying and hiding relevant info
         lblReceiptHeader.Visible = true;
         ContBut.Visible = false;
