@@ -15,9 +15,9 @@
             Manager View</p>
         <ul>
             <asp:LinkButton ID="lBtnManagerHome" runat="server" OnClick="lBtnManagerHome_Click">Manager Home</asp:LinkButton>
-            <li>
+            
                 <br />
-            </li>
+            <br />
             <asp:LinkButton ID="lBtnStartup" runat="server" OnClick="lBtnStartup_Click">System Startup</asp:LinkButton>
             &nbsp;&nbsp;&nbsp;
             <asp:LinkButton ID="lBtnMaintenance" runat="server" OnClick="lBtnMaintenance_Click">Maintenance</asp:LinkButton>
