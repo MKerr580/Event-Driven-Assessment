@@ -45,11 +45,9 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
             //inserting data into textboxes
             bal = custAccount.getbalance();
             lblBal.Text = bal.ToString("C");
-            lblBalRec.Text = bal.ToString("C");
             LblName.Text = loggedInCustomer.getfirstname() + " " + loggedInCustomer.getsurname();
             LblAccNum.Text = custAccount.getaccnumber().ToString();
-            LblNameRec.Text = loggedInCustomer.getfirstname() + " " + loggedInCustomer.getsurname();
-            LblAccNumRec.Text = custAccount.getaccnumber().ToString();
+            
         }
 
     }
@@ -70,9 +68,6 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
         LblName.Visible = true;
         LblAccNum.Visible = true;
         lblBal.Visible = true;
-        LblNameRec.Visible = false;
-        LblAccNumRec.Visible = false;
-        lblBalRec.Visible = false;
         lblBalRecNew.Visible = false;
         lblBalWithdrawRec.Visible = false;
         ContButRec.Visible = false;
@@ -98,9 +93,6 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
         WithdrawList.Visible = true;
         TxtWithdraw.Visible = true;
         WithdrawEuro.Visible = true;
-        LblNameRec.Visible = false;
-        LblAccNumRec.Visible = false;
-        lblBalRec.Visible = false;
         lblBalRecNew.Visible = false;
         lblBalWithdrawRec.Visible = false;
         ContButRec.Visible = false;
@@ -169,27 +161,34 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
 
         if (TxtWithdraw.Text.Equals(""))
         {
+            //converts the select value in checked box too integer and stores
             amountwithdraw = Convert.ToInt32(WithdrawList.SelectedValue);
         }
         else
         {
+            //converts the select value in text box too integer and stores
             amountwithdraw = Convert.ToInt32(TxtWithdraw.Text);
         }
 
         if (amountwithdraw % 10 != 0)
         {
-            //ʕ•ᴥ•ʔ
+            //if the value isnt a multiple of 10 then error is displayed
             lblError.Text = "Error- Amount must be a multiple of 10";
         }
         else if (WithdrawEuro.Checked)
         {
+            //if chosen to withdraw as euros amount withdraw is divided by exchange rate stored in banksys and stored in withdrawdec
             withdrawdec = amountwithdraw / BankSys1.getexchangerate();
+            //setting the new balance
             bal = bal - withdrawdec;
         }
         else
         {
+            //if chosen to withdraw as euros amount withdraw is divided by exchange rate stored in banksys and stored in withdrawdec
             withdrawdec = amountwithdraw;
+            //setting the new balance
             bal = bal - withdrawdec;
+            //display balance in the  designated label
             lblBal.Text = bal.ToString("C");
             
         }
@@ -200,6 +199,7 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
         }
         else
         {
+            //display balance in the  designated labels
             lblBalRecNew.Text = bal.ToString("C");
             lblBalWithdrawRec.Text = withdrawdec.ToString("C");
 

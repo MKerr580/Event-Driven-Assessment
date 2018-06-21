@@ -15,15 +15,18 @@ public partial class Manager : System.Web.UI.MasterPage
     private string pin;
     protected void Page_Load(object sender, EventArgs e)
     {
-        //
+        //retrieving pin from the session
         pin = Session["pin"].ToString();
         if (Session["Bank"] == null)
         {
+            //sends the user back to the main menu
             Response.Redirect("~/Index.aspx");
         }
         else
         {
+            //retrieving bank from the session
             BankSys1 = (Bank)Session["Bank"];
+            //filling the labels with designated data
             lblExchRate.Text = "Exchange Rate: " + BankSys1.getexchangerate().ToString();
             lblTimeUsed.Text = "Times Used: "+BankSys1.gettimeused().ToString();
             lblFailedLogins.Text = "Failed logins: "+BankSys1.getfailedlogins().ToString();
@@ -36,17 +39,21 @@ public partial class Manager : System.Web.UI.MasterPage
 
     protected void lBtnStartup_Click(object sender, EventArgs e)
     {
+        //sends the user back to the main menu
         Response.Redirect("~/Index.aspx");
     }
 
     protected void lBtnMaintenance_Click(object sender, EventArgs e)
     {
+
+        //making relevant content box show and the shutdown button invisible
         CPHContent.Visible = true;
         Shutdown.Visible = false;
 
     }
     protected void lBtnShutdown_Click(object sender,EventArgs e)
     {
+        //making relevant text boxes visible and others disappear
         LblAmountWithdrawn.Visible = false;
         lblCardsret.Visible = false;
         lblErrorMSG.Visible = false;
@@ -68,13 +75,18 @@ public partial class Manager : System.Web.UI.MasterPage
         if (TxtRate.ToString() != "")
         {
             decimal exchRate;
+            //getting exchrate from the text box and converting it to deciamal
             exchRate = Convert.ToDecimal(TxtRate.Text);
+            //set the banks exchangerate to exchrate
             BankSys1.setexchangerate(exchRate);
+            //save banksys1 to the session
             Session["Bank"] = BankSys1;
+            //display the current exch rate in the box
             lblExchRate.Text = "Exchange Rate: " + BankSys1.getexchangerate().ToString();
         }
         else
         {
+            //error message
             lblErrorMSG.Text = "Error";
         }
     }
@@ -82,8 +94,9 @@ public partial class Manager : System.Web.UI.MasterPage
 
     protected void Shutdown_Click(object sender, EventArgs e)
     {
+        //obtaining connection string
         string connStr = ConfigurationManager.ConnectionStrings["Bank"].ConnectionString;
-
+        //retrieving bank from the session
         Bank BankSys1 = (Bank)Session["Bank"];
 
 

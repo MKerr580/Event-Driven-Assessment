@@ -92,22 +92,6 @@
         <br />
         </asp:ContentPlaceHolder>
     </div>
-        <p>
-            <br />
-        <asp:Label ID="LblNameRec" runat="server" Visible="false" ></asp:Label>
-            <br />
-        <asp:Label ID="LblAccNumRec" runat="server" Visible="false" ></asp:Label>
-            <br />
-            <asp:Label ID="lblBalRec" runat="server" Text="" Visible="false"></asp:Label>
-            <br />
-            <br />
-            <br />
-        </p>
-        <p>
-            &nbsp;</p>
-        <p>
-        <br />
-        </p>
     </form>
 </body>
 </html>
