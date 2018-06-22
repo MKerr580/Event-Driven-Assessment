@@ -179,13 +179,13 @@ public class DAL2
     {
         //Creating SQL command as a string
         //balance and acc number are passed as parameters
-        string sqlCom = "UPDATE Account SET balance =@balance WHERE AccountNumber=@accountnumber";
+        string sqlCom = "UPDATE `Account` SET `balance` =@Balance WHERE AccountNumber=@AccountNumber";
 
         //using com string and db connection
         SqlCommand cmd = new SqlCommand(sqlCom, conn);
         //adding balance and acc number 
-        cmd.Parameters.AddWithValue("@balance", a.getbalance());
-        cmd.Parameters.AddWithValue("@accountnumber", a.getaccnumber());
+        cmd.Parameters.AddWithValue("@Balance", a.getbalance());
+        cmd.Parameters.AddWithValue("@AccountNumber", a.getaccnumber());
         try
         {
             //open connection to databse

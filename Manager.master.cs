@@ -115,7 +115,7 @@ public partial class Manager : System.Web.UI.MasterPage
        
             }
         //Abandoning session and redirecting user the index
-        Session.Abandon();
+            Session.Abandon();
             Response.Redirect("..\\Index.aspx");
         }
         

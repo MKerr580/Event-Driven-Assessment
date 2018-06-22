@@ -219,7 +219,6 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
             lblBalRecNew.Text = bal.ToString("C");
 
             lblBalWithdrawRec.Text = withdrawdec.ToString("C");
-            Session["Bank"] = BankSys1;
             
         }
     }
