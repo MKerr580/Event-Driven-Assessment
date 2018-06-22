@@ -112,16 +112,12 @@ public partial class Manager : System.Web.UI.MasterPage
             {
                 //run update acc from the DAL
                 DAL.updateAccountData(kvp1.Value);
-
+       
             }
-        }
-        //setting the session variables to null due to system shutdown
-        Session["Bank"] = null;
-        Session["pin"] = null;
-        Session["login"] = null;
-
         //Abandoning session and redirecting user the index
         Session.Abandon();
-        Response.Redirect("..\\Index.aspx");
+            Response.Redirect("..\\Index.aspx");
+        }
+        
     }
 }

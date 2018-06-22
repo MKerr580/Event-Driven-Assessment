@@ -185,7 +185,7 @@ public class DAL2
         SqlCommand cmd = new SqlCommand(sqlCom, conn);
         //adding balance and acc number 
         cmd.Parameters.AddWithValue("@balance", a.getbalance());
-        cmd.Parameters.AddWithValue("@accoutnumber", a.getaccnumber());
+        cmd.Parameters.AddWithValue("@accountnumber", a.getaccnumber());
         try
         {
             //open connection to databse
