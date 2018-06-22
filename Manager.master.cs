@@ -95,11 +95,9 @@ public partial class Manager : System.Web.UI.MasterPage
 
     protected void Shutdown_Click(object sender, EventArgs e)
     {
-        //obtaining connection string
-        string connStr = ConfigurationManager.ConnectionStrings["Bank"].ConnectionString;
         //retrieving bank from the session
         Bank BankSys1 = (Bank)Session["Bank"];
-
+        string pin = (string)Session["pin"];
 
         //for each loop to insert all Customers accounts in the customers accounts dictionary into the database
 
