@@ -20,13 +20,14 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
     decimal bal;
     protected void Page_Load(object sender, EventArgs e)
     {
-       
+
 
         if (Session["Bank"] == null)
         {
             //if Bank is null then redirect to menu
             Response.Redirect("~/Index.aspx");
-        }else
+        }
+        else
         {
             //retrieving data from the session
             BankSys1 = (Bank)Session["Bank"];
@@ -40,7 +41,7 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
                     //setting customer values
                     loggedInCustomer = c.Value;
                     custAccount = c.Value.getAccount(pin);
-                    
+
                 }
             }
             //inserting data into textboxes
@@ -48,7 +49,7 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
             lblBal.Text = bal.ToString("C");
             LblName.Text = loggedInCustomer.getfirstname() + " " + loggedInCustomer.getsurname();
             LblAccNum.Text = custAccount.getaccnumber().ToString();
-            
+
         }
 
     }
@@ -121,6 +122,8 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
 
     protected void ContBut_Click(object sender, EventArgs e)
     {
+
+
         lblError.Text = "";
         if (TxtWithdraw.Text.Equals(""))
         {
@@ -133,7 +136,7 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
             amountwithdraw = Convert.ToInt32(TxtWithdraw.Text);
         }
 
-        if(amountwithdraw % 10 != 0)
+        if (amountwithdraw % 10 != 0)
         {
             //if the value isnt a multiple of 10 then error is displayed
             lblError.Text = "Error- Amount must be a multiple of 10";
@@ -142,9 +145,7 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
         {
             //if chosen to withdraw as euros amount withdraw is divided by exchange rate stored in banksys and stored in withdrawdec
             withdrawdec = amountwithdraw / BankSys1.getexchangerate();
-
-            //setting the new balance
-            custAccount.setbalance(bal - withdrawdec);
+            
 
             WithdrawEuro.Checked = false;
         }
@@ -153,7 +154,6 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
             //setting amount withdraw to withdraw dec 
             withdrawdec = amountwithdraw;
             //setting the new balance
-            custAccount.setbalance(bal - withdrawdec);
         }
         transsucc = BankSys1.Withdraw(login, pin, withdrawdec);
         //checking if transaction succeeds
@@ -164,12 +164,13 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
         }
         else
         {
+            bal = custAccount.getbalance();
             //display balance in the  designated label
             lblBal.Text = bal.ToString("C");
-            //updating users info to database
-            dal.updateAccountData(custAccount);
         }
     }
+
+
     protected void ContButRec_Click(object sender, EventArgs e)
     {
 
@@ -197,7 +198,6 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
             //display balance in the  designated label
             lblBal.Text = bal.ToString("C");
             //setting the new balance
-            custAccount.setbalance(bal - withdrawdec);
             WithdrawEuro.Checked = false;
         }
         else
@@ -206,9 +206,6 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
             withdrawdec = amountwithdraw;
             //display balance in the  designated label
             lblBal.Text = bal.ToString("C");
-            //setting the new balance
-            custAccount.setbalance(bal - withdrawdec);
-
         }
         transsucc = BankSys1.Withdraw(login, pin, withdrawdec);
         if (transsucc == false)
@@ -217,13 +214,13 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
         }
         else
         {
+            bal = custAccount.getbalance();
             //display balance in the  designated labels
             lblBalRecNew.Text = bal.ToString("C");
-            
-            lblBalWithdrawRec.Text = withdrawdec.ToString("C");
 
-            //updating users info to database
-            dal.updateAccountData(custAccount);
+            lblBalWithdrawRec.Text = withdrawdec.ToString("C");
+            Session["Bank"] = BankSys1;
+            
         }
     }
     protected void ExitButRec_Click(object sender, EventArgs e)
