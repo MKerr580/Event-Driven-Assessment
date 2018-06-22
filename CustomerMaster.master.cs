@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 
 public partial class CustomerMaster : System.Web.UI.MasterPage
 {
+    DAL2 dal;
     Bank BankSys1;
     string pin;
     string login;
@@ -141,10 +142,10 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
         {
             //if chosen to withdraw as euros amount withdraw is divided by exchange rate stored in banksys and stored in withdrawdec
             withdrawdec = amountwithdraw / BankSys1.getexchangerate();
-            
+
             //setting the new balance
-            bal = bal - withdrawdec;
-            
+            custAccount.setbalance(bal - withdrawdec);
+
             WithdrawEuro.Checked = false;
         }
         else
@@ -152,9 +153,7 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
             //setting amount withdraw to withdraw dec 
             withdrawdec = amountwithdraw;
             //setting the new balance
-            bal = bal - withdrawdec;
-            custAccount.setbalance(bal);
-            Session["User"] = custAccount;
+            custAccount.setbalance(bal - withdrawdec);
         }
         transsucc = BankSys1.Withdraw(login, pin, withdrawdec);
         //checking if transaction succeeds
@@ -167,6 +166,8 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
         {
             //display balance in the  designated label
             lblBal.Text = bal.ToString("C");
+            //updating users info to database
+            dal.updateAccountData(custAccount);
         }
     }
     protected void ContButRec_Click(object sender, EventArgs e)
@@ -193,21 +194,21 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
         {
             //if chosen to withdraw as euros amount withdraw is divided by exchange rate stored in banksys and stored in withdrawdec
             withdrawdec = amountwithdraw / BankSys1.getexchangerate();
+            //display balance in the  designated label
+            lblBal.Text = bal.ToString("C");
             //setting the new balance
-            bal = bal - withdrawdec;
-            custAccount.setbalance(bal);
-            Session["User"] = custAccount;
+            custAccount.setbalance(bal - withdrawdec);
             WithdrawEuro.Checked = false;
         }
         else
         {
             //if chosen to withdraw as euros amount withdraw is divided by exchange rate stored in banksys and stored in withdrawdec
             withdrawdec = amountwithdraw;
-            //setting the new balance
-            bal = bal - withdrawdec;
             //display balance in the  designated label
             lblBal.Text = bal.ToString("C");
-            
+            //setting the new balance
+            custAccount.setbalance(bal - withdrawdec);
+
         }
         transsucc = BankSys1.Withdraw(login, pin, withdrawdec);
         if (transsucc == false)
@@ -221,6 +222,8 @@ public partial class CustomerMaster : System.Web.UI.MasterPage
             
             lblBalWithdrawRec.Text = withdrawdec.ToString("C");
 
+            //updating users info to database
+            dal.updateAccountData(custAccount);
         }
     }
     protected void ExitButRec_Click(object sender, EventArgs e)

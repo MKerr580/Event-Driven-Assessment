@@ -41,6 +41,7 @@ public partial class Manager : System.Web.UI.MasterPage
     {
         //sends the user back to the main menu
         Response.Redirect("~/Index.aspx");
+        DAL.retrieveAllAccountData();
     }
 
     protected void lBtnMaintenance_Click(object sender, EventArgs e)

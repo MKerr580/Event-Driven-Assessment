@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 
 public partial class Index : System.Web.UI.Page
 {
+
     Bank BankSys = new Bank();
     string login;
     string pin;
