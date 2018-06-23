@@ -114,10 +114,10 @@ public partial class Manager : System.Web.UI.MasterPage
                 DAL.updateAccountData(kvp1.Value);
        
             }
-        //Abandoning session and redirecting user the index
+
+        }
+                //Abandoning session and redirecting user the index
             Session.Abandon();
             Response.Redirect("..\\Index.aspx");
-        }
-        
     }
 }

@@ -179,7 +179,7 @@ public class DAL2
     {
         //Creating SQL command as a string
         //balance and acc number are passed as parameters
-        string sqlCom = "UPDATE `Account` SET `balance` =@Balance WHERE AccountNumber=@AccountNumber";
+        string sqlCom = "UPDATE Account SET balance =@Balance WHERE AccountNumber=@AccountNumber";
 
         //using com string and db connection
         SqlCommand cmd = new SqlCommand(sqlCom, conn);
